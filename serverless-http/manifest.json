@@ -1,0 +1,14 @@
+{
+  "frameworkVersion": "1.0",
+  "name": "Ticket webhook",
+  "slug": "ticket-webhook",
+  "version": "1.0.0",
+  "description": "Sample serverless app. Use hosted server/server.js, or set serverless.endpoint for HTTP mode.",
+  "author": "Samvaad",
+  "events": ["onTicketCreate", "onTicketUpdate", "onMessageReceived"],
+  "serverless": { "mode": "hosted" },
+  "iparams": [
+    { "name": "notify_url", "type": "text", "label": "Optional notify URL" }
+  ],
+  "permissions": { "allowedHosts": [] }
+}

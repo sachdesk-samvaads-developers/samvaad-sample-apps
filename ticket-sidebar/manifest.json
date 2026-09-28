@@ -1,0 +1,13 @@
+{
+  "frameworkVersion": "1.0",
+  "name": "Ticket context",
+  "slug": "ticket-context",
+  "version": "1.0.0",
+  "description": "Sample sidebar app that shows the current ticket via the Samvaad App SDK.",
+  "author": "Samvaad",
+  "icon": "assets/icon.svg",
+  "locations": ["ticket_sidebar", "conversation_sidebar"],
+  "iparams": [
+    { "name": "greeting", "type": "text", "label": "Greeting", "default": "Hello" }
+  ]
+}
