@@ -1,0 +1,90 @@
+{
+  "frameworkVersion": "1.0",
+  "name": "Click-to-call dialer",
+  "slug": "click-to-call-dialer",
+  "version": "1.0.0",
+  "description": "Sample CTI app: calls contacts through Exotel click-to-call when an agent clicks a phone number, and logs each call with its status, duration and recording.",
+  "author": "Samvaad",
+  "icon": "assets/icon.svg",
+  "locations": [
+    "cti_global"
+  ],
+  "cti": {
+    "mode": "bundle",
+    "handles": [
+      "outbound"
+    ],
+    "size": {
+      "width": 340,
+      "height": 440
+    }
+  },
+  "iparams": [
+    {
+      "name": "api_host",
+      "type": "text",
+      "label": "Exotel API host: api.exotel.com (Singapore cluster) or api.in.exotel.com (Mumbai cluster)",
+      "required": true
+    },
+    {
+      "name": "account_sid",
+      "type": "text",
+      "label": "Exotel account SID",
+      "required": true
+    },
+    {
+      "name": "api_key",
+      "type": "text",
+      "label": "Exotel API key",
+      "required": true
+    },
+    {
+      "name": "api_token",
+      "type": "password",
+      "label": "Exotel API token",
+      "required": true
+    },
+    {
+      "name": "caller_id",
+      "type": "text",
+      "label": "Your ExoPhone (caller ID)",
+      "required": true
+    },
+    {
+      "name": "agent_phone",
+      "type": "text",
+      "label": "Agent phone Exotel rings first (for example 09812345678)",
+      "required": true
+    }
+  ],
+  "permissions": {
+    "allowedHosts": [
+      "{{iparams.api_host}}"
+    ],
+    "helpdesk": [
+      "contact.phone"
+    ]
+  },
+  "requests": [
+    {
+      "name": "click2call",
+      "method": "POST",
+      "url": "https://{{iparams.api_key}}:{{iparams.api_token}}@{{iparams.api_host}}/v1/Accounts/{{iparams.account_sid}}/Calls/connect.json",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "body": {
+        "From": "{{iparams.agent_phone}}",
+        "To": "{{contact.phone}}",
+        "CallerId": "{{iparams.caller_id}}",
+        "Record": "true",
+        "CustomField": "{{args.call_id}}"
+      }
+    },
+    {
+      "name": "callDetails",
+      "method": "GET",
+      "url": "https://{{iparams.api_key}}:{{iparams.api_token}}@{{iparams.api_host}}/v1/Accounts/{{iparams.account_sid}}/Calls/{{args.sid}}.json"
+    }
+  ]
+}
