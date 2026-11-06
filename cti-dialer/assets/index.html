@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exotel click-to-call</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <header>
+      <strong>Exotel</strong>
+      <span id="state" class="pill">Idle</span>
+    </header>
+    <section id="idle">
+      <p class="muted">Click a phone number on a contact. Exotel rings your phone first, then the customer.</p>
+    </section>
+    <section id="pending" hidden>
+      <p>Call <strong id="who"></strong>?</p>
+      <div class="row">
+        <button id="call" type="button">Call</button>
+        <button id="cancel" type="button" class="quiet">Cancel</button>
+      </div>
+    </section>
+    <section id="calling" hidden>
+      <p>Calling <strong id="who-live"></strong></p>
+      <p class="muted" id="detail">Answer your phone to be connected.</p>
+      <button id="done" type="button" class="quiet">Finish and log</button>
+    </section>
+    <p id="error" class="error" hidden></p>
+    <script src="app.js"></script>
+  </body>
+</html>

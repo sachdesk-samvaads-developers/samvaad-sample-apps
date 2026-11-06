@@ -5,6 +5,7 @@ Example custom apps built with the [Samvaad App SDK](https://developers.samvaads
 | Sample | Kind | What it shows |
 | --- | --- | --- |
 | [`ticket-sidebar`](ticket-sidebar/) | Frontend (iframe) | Reads the current ticket or conversation, reacts to `ticket.updated` / `conversation.updated`, resizes itself, and opens a slider page that returns a result |
+| [`cti-dialer`](cti-dialer/) | CTI app (phone dock) | Click-to-call through a telephony provider (Exotel): gets a `dial_ref` instead of the number, sends a form body, and logs the call's status, duration and recording |
 | [`serverless-http`](serverless-http/) | Serverless | Hosted handlers for `onTicketCreate`, `onTicketUpdate` and `onMessageReceived`, with notes on switching to your own HTTPS endpoint |
 
 ## Get started
